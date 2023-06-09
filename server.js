@@ -15,15 +15,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 db.mongoose
-    .connect(db.url + db.database, {
+    .connect(db.url, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        dbName: db.database
     })
     .then(() => {
-        // console.log("Connected to the database!");
+        console.log("Connected to the database!");
     })
     .catch(err => {
-        // console.log("Cannot connect to the database!", err);
+        console.log("Cannot connect to the database!", err);
         process.exit();
     });
 
